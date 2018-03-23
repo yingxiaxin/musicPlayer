@@ -1,0 +1,89 @@
+
+@barHeight: 40px;
+@barLength: 900px;
+@barBgColor: #292B2D;
+@radius: 3px;
+
+.searchBarContainer
+{
+    width: @barLength;
+    height: @barHeight;
+    margin: 50px auto;
+    box-shadow: 0 0 20px rgba(146, 136, 189, 0.7);
+    padding: 0;
+    font-size: 0;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: @radius;
+    backface-visibility: hidden;
+
+    transition: box-shadow .2s ease-in-out;
+    &:hover
+    {
+        box-shadow: 0 0 20px rgba(221, 220, 228, 0.8);
+        
+        animation: trans 0.2s;
+        @keyframes trans
+        {
+            0%
+            {
+                transform: translate(0);
+            }   
+            50%
+            {
+                transform: translateY(8px) translateZ(10px);
+            }
+            100%
+            {
+                transform: translate(0) translateZ(0);
+            }
+        }
+    }
+
+    input
+    {
+        width: (@barLength - @barHeight);
+        height: @barHeight;
+        background-color: @barBgColor;
+        outline: none;
+        border: none;
+        padding: 10px;
+        box-sizing: border-box;
+        color: rgb(228, 220, 220);
+        font-size: 16px;
+        display: inline-block;
+        line-height: @barHeight;
+        border-radius: @radius 0 0 @radius;
+    }
+
+    span
+    {
+        width: @barHeight;
+        height: @barHeight;
+        background-color: @barBgColor;
+        display: inline-block;
+        line-height: @barHeight;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        border-block-start-width: @radius 0 0 @radius;  //此句无效
+        user-select: none;
+        text-align: center;
+        padding: 0;
+
+        &:hover
+        {
+            background-color: rgb(90, 93, 95);
+        }
+
+        i
+        {
+            width: 16px;
+            height: 16px;                
+            background: url(../../images/icon_sprite.png);            
+            background-position: 0 -40px;
+            display: inline-block;
+            margin: auto;
+        }
+    }
+}

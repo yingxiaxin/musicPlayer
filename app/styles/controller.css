@@ -1,0 +1,50 @@
+.controller_unit
+{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: #aaa;
+    border-radius: 50%;
+    transform: scale(0.5);
+}
+
+.controller_unit_center
+{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: #888;
+    transition: transform .6s ease-in-out, background-color .3s ease;
+    border-radius: 50%;
+}
+
+.controller_unit_center_inverse
+{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: #555;
+    transform: rotateY(180deg);
+    transition: transform .6s ease-in-out, background-color .3s ease;
+    border-radius: 50%;
+}
+
+.controller_unit_center::after
+{
+    font-family: 'icons-turn-arrow';
+    content: "\21BA";
+    line-height: 30px;
+    color: white;
+}

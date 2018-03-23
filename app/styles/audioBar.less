@@ -1,0 +1,197 @@
+.audioBar
+{
+    width: 60%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(146, 136, 189, 0.7);
+    transition: box-shadow .2s ease-in-out;
+    &:hover
+    {
+        box-shadow: 0 0 20px rgba(221, 220, 228, 0.8);
+        
+        animation: trans 0.2s;
+        @keyframes trans
+        {
+            0%
+            {
+                transform: translate(0);
+            }   
+            50%
+            {
+                transform: translateY(8px) translateZ(10px);
+            }
+            100%
+            {
+                transform: translate(0) translateZ(0);
+            }
+        }
+    }
+
+    .controlBtn
+    {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        a
+        {
+            width: 20px;
+            height: 23px;
+            opacity: .3;
+            transition: opacity 0.5s ease;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
+
+        .prev
+        {
+            background: url(../../images/musicPlayerBtn.png);
+            background-position: 0 -28.5px;
+        }
+        .next
+        {
+            background: url(../../images/musicPlayerBtn.png);
+            background-position: 0 -51.5px;
+        }
+        .play
+        {
+            height: 30px;
+            background: url(../../images/musicPlayerBtn.png);
+            background-position: 0 0px;
+        }
+        .repeatMode
+        {
+            width: 30px;
+            background: url(../../images/musicPlayerBtn.png);
+            background-position: 0 -72.5px;
+        }
+    }
+
+    .progress
+    {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+
+        input
+        {
+            width: 80%;
+            -webkit-appearance: none;
+            border-radius: 10px;
+            // background: linear-gradient(to right, rgba(232,191,160,1) 0%, rgba(233,144,112,1) 30%, rgba(227,221,216,1) 31%, rgba(227,221,216,1) 100%);
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+            cursor: pointer;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+
+            &::-webkit-slider-thumb
+            {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 12px;
+                margin-top: -7px; /*使滑块超出轨道部分的偏移量相等*/
+                background: lightgrey; 
+                border-radius: 50%; /*外观设置为圆形*/
+                border: solid 1px rgba(5, 21, 26, 0.5); /*设置边框*/
+            }
+
+            &::-webkit-slider-runnable-track
+            {
+                height: 5px;
+                border-radius: 10px; /*将轨道设为圆角的*/
+            }
+
+            &:focus
+            {
+                outline: none;
+            }
+        }
+
+        span
+        {
+            color: #D3D3D3;
+            font-size: 14px;
+        }
+    }
+
+    .volume
+    {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a
+        {
+            width: 20px;
+            height: 23px;
+            opacity: .3;
+            transition: opacity 0.3s ease;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
+
+        .mute
+        {
+            width: 30px;
+            background: url(../../images/musicPlayerBtn.png);
+            background-position: 0 -144px;
+        }
+
+        input
+        {
+            -webkit-appearance: none;
+            border-radius: 10px;
+            // background: linear-gradient(to right, rgba(232,191,160,1) 0%, rgba(233,144,112,1) 30%, rgba(227,221,216,1) 31%, rgba(227,221,216,1) 100%);   //30%默认range的时候背景色
+            background: linear-gradient(to right, rgba(232,191,160,1) 0%, rgba(234,35,0,1) 100%);
+            opacity: 0.7;
+            transition: opacity 0.5s ease;
+            cursor: pointer;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+
+            &::-webkit-slider-thumb
+            {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 12px;
+                margin-top: -7px; /*使滑块超出轨道部分的偏移量相等*/
+                background: lightgrey; 
+                border-radius: 50%; /*外观设置为圆形*/
+                border: solid 1px rgba(5, 21, 26, 0.5); /*设置边框*/
+            }
+
+            &::-webkit-slider-runnable-track
+            {
+                height: 5px;
+                border-radius: 10px; /*将轨道设为圆角的*/
+            }
+
+            &:focus
+            {
+                outline: none;
+            }
+        }
+    }
+}
