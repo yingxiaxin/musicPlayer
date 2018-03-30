@@ -8,7 +8,6 @@
 {
     width: @barLength;
     height: @barHeight;
-    margin: 50px auto;
     box-shadow: 0 0 20px rgba(146, 136, 189, 0.7);
     padding: 0;
     font-size: 0;
@@ -16,8 +15,9 @@
     text-align: center;
     border-radius: @radius;
     backface-visibility: hidden;
+    transition: transform 0.5s ease;
 
-    transition: box-shadow .2s ease-in-out;
+
     &:hover
     {
         box-shadow: 0 0 20px rgba(221, 220, 228, 0.8);

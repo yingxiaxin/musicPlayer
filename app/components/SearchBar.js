@@ -1,17 +1,35 @@
 import React from 'react';
 import searchBarStyle from '../styles/searchBar.less';
 
+import HttpRequest from './HttpRequest';
+
+
 class SearchBar extends React.Component
 {
     constructor(props) 
     {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
     
+    handleKeyDown(e)
+    {
+        if(e.keyCode == '13')
+        {
+            e.preventDefault;
+            this.handleClick(e);
+        }
+    }
+
     handleClick(e)
     {
-        alert('search');
+        let keyword = document.getElementById('searchInput').value;
+        if(keyword == '')
+        {
+            return;
+        }
+        this.props.handleSearch(keyword);
 
         e.stopPropagation();
         e.preventDefault();
@@ -19,30 +37,9 @@ class SearchBar extends React.Component
 
     render()
     {
-        // let styleObj = {};
-        // if(this.props.arrange.pos)
-        // {
-        //     styleObj = this.props.arrange.pos;
-        // }
-
-        // if(this.props.arrange.rotate)
-        // {
-        //     ['MozTransform', 'msTransform', 'WebkitTransform', 'transform'].forEach(value => 
-        //     {
-        //         styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)';
-        //     });            
-        // }
-
-        // if(this.props.arrange.isCenter)
-        // {
-        //     styleObj.zIndex = 11;
-        // }
-
-        // let imgFigureClassName = this.props.arrange.isInverse ? imageFigureStyle.img_figure_inverse : imageFigureStyle.img_figure;
-
         return (            
             <div className="searchBarContainer">
-                <input type="text" name="" id="" placeholder="搜索关键字"/>
+                <input type="text" name="" id="searchInput" placeholder="搜索关键字" onKeyDown={this.handleKeyDown}/>
                 <span onClick={this.handleClick}><i></i></span>
             </div>
         );

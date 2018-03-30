@@ -1,0 +1,60 @@
+.lyric
+{
+    width: 40%;
+    height: 650px;
+    box-sizing: border-box;
+    background-color: rgba(41, 43, 45, 0.5);
+    // box-shadow: 0 0 20px rgba(146, 136, 189, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.5s ease;
+
+
+    img
+    {
+        width: 60%;
+        height: 40%;
+    }
+
+    div
+    {
+        width: 100%;
+        height: 60%;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        ul
+        {
+            width: 100%;
+            height: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: scroll;
+
+            &::-webkit-scrollbar
+            {
+                display: none;
+            }
+
+            li
+            {
+                display: block;
+                color: rgb(211, 206, 206);
+                height: 25px;
+                font-size: 16px;
+                text-align: center;
+                margin: 10px auto;
+            }
+
+            .highlighted
+            {
+                color: #3FA16F;
+                font-weight: bold;
+            }
+        }
+    }
+}

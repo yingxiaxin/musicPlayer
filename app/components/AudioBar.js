@@ -13,6 +13,7 @@ class AudioBar extends React.Component
         this.audioEnded = this.audioEnded.bind(this);
         this.audioOnPlay = this.audioOnPlay.bind(this);
         this.handleDragProgress = this.handleDragProgress.bind(this);
+        this.handleMouseMove = this.handleMouseMove.bind(this);
 
         //雪碧图中播放暂停图标、循环模式图标、静音图标的位置
         this.playStatusPosArray = ['0 0px', '-30px 0'];
@@ -47,6 +48,9 @@ class AudioBar extends React.Component
         this.mgen = this.muteGen();
         this.rgen.next();
         this.mgen.next();
+
+        this.audioInfo = {};
+        this.audioUrl = 'http://music.163.com/song/media/outer/url?';
     }
 
     handleClick(e)
@@ -63,7 +67,7 @@ class AudioBar extends React.Component
                 let audio = document.getElementById('audio');
                 if(audio.paused == true)
                 {
-                    this.switchPlayStatus(1);
+                    this.switchPlayStatus(1);   //1是开始播放，0是暂停
                 }
                 else
                 {
@@ -90,6 +94,15 @@ class AudioBar extends React.Component
             }
         }
     }
+
+    handleMouseMove(e)
+    {
+        let domNode = e.currentTarget;
+        let x = e.pageX - domNode.offsetLeft;
+        let y = e.pageY - domNode.offsetTop;
+        domNode.style.setProperty('--x', x + 'px');
+        domNode.style.setProperty('--y', y + 'px');
+    }
     
     handleTimeUpdate(e)
     {
@@ -101,6 +114,9 @@ class AudioBar extends React.Component
 
         let progress = document.getElementById('progressBar');
         progress.value = newTime;
+
+        let updateLyric = this.props.updateLyricCallback;
+        updateLyric(audio.currentTime);
     }
 
     handleDragProgress(e)
@@ -146,6 +162,15 @@ class AudioBar extends React.Component
             secStr = secMod.padStart(2, '0');
 
         return minStr + ' : ' + secStr;
+    }
+
+    //从音乐列表点击调用的函数，将音乐信息传递过来，并直接开始播放
+    playSong(songinfo)
+    {
+        this.songinfo = songinfo;
+        let audio = document.getElementById('audio');
+        audio.src = this.audioUrl + 'id=' + this.songinfo.id + '.mp3';
+        this.switchPlayStatus(1);
     }
 
     switchPlayStatus(index)
@@ -239,7 +264,7 @@ class AudioBar extends React.Component
     render()
     {
         return (
-            <div className="audioBar">
+            <div className="audioBar" onMouseMove={this.handleMouseMove}>
                 <audio src="./city.mp3" id="audio" volumevalue="1" 
                                         onTimeUpdate={this.handleTimeUpdate} 
                                         onCanPlay={this.audioInitialize}

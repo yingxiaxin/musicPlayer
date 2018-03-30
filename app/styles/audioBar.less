@@ -1,17 +1,40 @@
 .audioBar
 {
-    width: 60%;
+    width: 62%;
     height: 80px;
     display: flex;
     align-items: center;
-    margin: auto;
     box-shadow: 0 0 20px rgba(146, 136, 189, 0.7);
-    transition: box-shadow .2s ease-in-out;
+    background-color: rgba(41, 43, 45, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow .2s ease-in-out;
+
+    &::before 
+    {
+        --size: 0;
+        content: '';
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--size);
+        height: var(--size);
+        background: radial-gradient(circle closest-side, rgba(151, 149, 144, 0.3), rgba(151, 149, 144, 0));
+        transform: translate(-50%, -50%);
+        transition: width .2s ease, height .2s ease;
+        z-index: 0;
+      }
+
+    &:hover::before 
+    {
+        --size: 400px;
+    }
+
     &:hover
     {
         box-shadow: 0 0 20px rgba(221, 220, 228, 0.8);
         
-        animation: trans 0.2s;
+        // animation: trans 0.2s;
         @keyframes trans
         {
             0%
@@ -36,6 +59,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        z-index: 1;
 
         a
         {
@@ -81,6 +105,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        z-index: 1;
 
 
         input
@@ -125,6 +150,7 @@
         {
             color: #D3D3D3;
             font-size: 14px;
+            user-select: none;
         }
     }
 
@@ -135,6 +161,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 1;
 
         a
         {

@@ -1,0 +1,90 @@
+.musicItem
+{
+    @lineheight:50px;
+
+    width: 100%;
+    height: @lineheight;
+    border-bottom: 1px solid rgba(117, 118, 120, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    margin: 0;
+
+    &:hover
+    {
+        transform: translateY(2px) translateZ(30px);
+        box-shadow: 0 0 20px rgba(222, 221, 224, 0.7);
+    }
+
+    span
+    {
+        color: rgb(172, 173, 173);
+        font-size: 14px;
+        text-align: left;
+        line-height: @lineheight;
+        padding: 0 15px;
+        box-sizing: border-box;
+        user-select: none;
+
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
+        word-break: keep-all; 
+    }
+
+    .order
+    {
+        width: 5%;
+        height: 100%;
+        text-align: right;
+        padding: 0;
+    }
+
+    .musicName
+    {
+        width: 45%;
+        height: 100%;
+    }
+
+    .playBtn
+    {
+        width: 5%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        a
+        {
+            display: block;
+            width: 20px;
+            height: 18px;
+            background: url(../../images/icon_sprite.png);
+            background-position: -80px -220px;
+            display: none;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
+    }
+
+    .singer
+    {
+        width: 15%;
+        height: 100%;
+    }
+
+    .album
+    {
+        width: 30%;
+        height: 100%;
+    }
+}
