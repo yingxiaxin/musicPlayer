@@ -17,7 +17,10 @@ class AudioBar extends React.Component
 
         //雪碧图中播放暂停图标、循环模式图标、静音图标的位置
         this.playStatusPosArray = ['0 0px', '-30px 0'];
-        this.repeatModePosArray = ['0 -72.5px', '0 -205px', '0 -232px'];
+        // this.repeatModePosArray = ['0 -72.5px', '0 -205px', '0 -232px']; //暂时只启用单曲循环功能
+
+        this.repeatModePosArray = ['0 -232px', '0 -232px', '0 -232px'];
+
         this.muteStatusPosArray = ['0 -144px', '0 -182px'];
 
         //音量控制条中rgb三个通道的最大小值数组，用来计算渐变
@@ -198,7 +201,7 @@ class AudioBar extends React.Component
     switchMuteMode(e)
     {
         let domNode = e.target;
-        domNode.style.backgroundPosition = this.muteStatusPosArray[this.mgen.next().value]; //就两种状态，所以公用同一个generator
+        domNode.style.backgroundPosition = this.muteStatusPosArray[this.mgen.next().value];
     }
 
     playPrev()
@@ -269,7 +272,8 @@ class AudioBar extends React.Component
                                         onTimeUpdate={this.handleTimeUpdate} 
                                         onCanPlay={this.audioInitialize}
                                         onEnded={this.audioEnded}
-                                        onPlay={this.audioOnPlay}>
+                                        onPlay={this.audioOnPlay}
+                                        loop>
                 </audio>
                 <div className="controlBtn">
                     <a href="javascript:void(0)" className="prev" onClick={this.handleClick}></a>

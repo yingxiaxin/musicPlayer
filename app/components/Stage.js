@@ -1,10 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 import SearchBar from './SearchBar';
 import AudioBar from './AudioBar';
 import MusicList from './MusicList';
 import Lyric from './Lyric';
 import HttpRequest from './HttpRequest';
+
 import '../styles/stage.less';
+import configData from '../data/configData.json';
 
 class Stage extends React.Component
 {
@@ -139,7 +141,8 @@ class Stage extends React.Component
     /**子组件使用的函数 */
     handleSearch(keywords)
     {
-        let url = 'http://localhost:3000/search';
+        // let url = 'http://47.98.157.208:80/search';
+        let url = configData.mainIp + configData.searchUrl;
         let obj = 
         {
             keywords: keywords

@@ -1,6 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import HttpRequest from './HttpRequest';
+
 import '../styles/lyric.less';
+import configData from '../data/configData.json';
 
 class Lyric extends React.Component
 {
@@ -24,7 +26,8 @@ class Lyric extends React.Component
         let songID = songinfo.id;
 
         //获取歌曲对应的图片
-        let picUrl = 'http://localhost:3000/song/detail';
+        // let picUrl = 'http://47.98.157.208:80/song/detail';
+        let picUrl = configData.mainIp + configData.picUrl;
         let picObj = 
         {
             ids: songID
@@ -49,7 +52,8 @@ class Lyric extends React.Component
 
 
         //获取歌曲的歌词
-        let lyricUrl = 'http://localhost:3000/lyric';
+        // let lyricUrl = 'http://47.98.157.208:80/lyric';
+        let lyricUrl = configData.mainIp + configData.lyricUrl;
         let lyricObj = 
         {
             id: songID
